@@ -14,6 +14,13 @@ def test_get_top_element(test_input, expected):
     heap_obj.build_heap(test_input)
     assert heap_obj.get_top_element() == expected
 
+@pytest.mark.parametrize("test_input", [[]])
+def test_get_top_element_raises(test_input):
+    with pytest.raises(IndexError, ):
+        heap_obj = Heap()
+        heap_obj.build_heap(test_input)
+        heap_obj.get_top_element()
+
 
 @pytest.mark.parametrize("test_input", [[1, 2, 3, 5], 
                                          [-1, 2, 0, 12], 
