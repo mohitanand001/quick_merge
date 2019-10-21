@@ -69,10 +69,10 @@ class Heap:
         right_child_indx = self.get_right_child_indx(node)
         largest_node_indx = node
 
-        if left_child_indx is not None and self.heap_arr[left_child_indx] > largest_node_indx:
+        if left_child_indx is not None and self.heap_arr[left_child_indx] > self.heap_arr[largest_node_indx]:
             largest_node_indx = left_child_indx
         
-        if right_child_indx is not None and self.heap_arr[right_child_indx] > largest_node_indx:
+        if right_child_indx is not None and self.heap_arr[right_child_indx] > self.heap_arr[largest_node_indx]:
             largest_node_indx = right_child_indx
         
         if largest_node_indx != node:
@@ -90,8 +90,21 @@ class Heap:
         for node in range(begin_node, end_node - 1, -1):
             self.max_heapify(node)
 
+    def heap_sort(self):
+        """Returns a sorted list. The heap exhausts (size becomes 0) after
+        the heap_sort operation is performed.
+        """
+        sorted_list = []
+        while(self.size > 0):
+            sorted_list.append(self.pop_top_element())
+        
+        return sorted_list
+
+
 if __name__ == "__main__":
     head_obj = Heap()
     head_obj.build_heap([3, -4, 1, 21, 2])
-    while(head_obj.size > 0):
-        print(head_obj.pop_top_element())
+    # while(head_obj.size > 0):
+    #     print(head_obj.pop_top_element())
+
+    print(head_obj.heap_sort())
