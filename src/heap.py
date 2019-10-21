@@ -12,26 +12,36 @@ class Heap:
 
 
     def get_left_child_indx(self, node):
+        """Returns the index of left child of node.
+        """
         if 2 * node + 1 < self.size:
             return 2 * node + 1
         return None
 
     def get_right_child_indx(self, node):
+        """Returns the index of the left child of node.
+        """
         if 2 * node + 2 < self.size:
             return 2 * node + 2
         return None
     
     def get_top_element(self):
+        """Returns the top element in the heap.
+        """
         if self.size > 0:
             return self.heap_arr[0]
         raise IndexError('Cannot get top element from an empty heap.')
 
     def get_last_element(self):
+        """Returns the last element in the heap.
+        """
         if self.size > 0:
             return self.heap_arr[-1]
         raise IndexError('Cannot get last element from an empty heap.')
 
     def pop_top_element(self):
+        """Returns top element, removes it from balances the heap."""
+
         last_element_indx = self.size - 1
         top_element_indx = 0
         top_element = self.heap_arr[0]
@@ -44,9 +54,13 @@ class Heap:
         return top_element
 
     def swap_nodes(self, arr, indx_1, indx_2):
+        """Swap the value in the arr, with the given index inde_1, and indx_2.
+        """
         arr[indx_1], arr[indx_2] = arr[indx_2], arr[indx_1]
 
     def max_heapify(self, node):
+        """Max heapifies a tree, starting from a given node index.
+        """
         
         left_child_indx = self.get_left_child_indx(node)
         right_child_indx = self.get_right_child_indx(node)
@@ -63,6 +77,8 @@ class Heap:
             self.max_heapify(largest_node_indx)
 
     def build_heap(self, A):
+        """Builds the heap from the collection.
+        """
 
         begin_node, end_node = len(A) // 2, 0
         self.heap_arr = A.copy()
