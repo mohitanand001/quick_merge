@@ -1,0 +1,60 @@
+class Heap:
+    """Custom Heap class which is used to find the max or min
+       among a group of objects according to the comparator 
+       function specified. If no comparator function is specified
+       the class behaves as max_heap.
+    """
+
+    def __init__(self, ):
+        self.heap_arr = []
+        self.size = 0
+        self.comprt = None
+
+
+    def get_left_child_indx(self, node):
+        if 2 * node + 1 < self.size:
+            return 2 * node + 1
+        return None
+
+    def get_right_child_indx(self, node):
+        if 2 * node + 2 < self.size:
+            return 2 * node + 2
+        return None
+    
+    def get_top_element(self):
+        if self.size > 0:
+            return self.heap_arr[0]
+        raise IndexError('Cannot get top element from an empty heap.')
+
+    def pop_top_element(self):
+        pass
+
+    def swap_nodes(self, arr, indx_1, indx_2):
+        arr[indx_1], arr[indx_2] = arr[indx_2], arr[indx_1]
+
+    def max_heapify(self, node):
+        
+        left_child_indx = self.get_left_child_indx(node)
+        right_child_indx = self.get_right_child_indx(node)
+        largest_node_indx = node
+
+        if left_child_indx is not None and self.heap_arr[left_child_indx] > largest_node_indx:
+            largest_node_indx = left_child_indx
+        
+        if right_child_indx is not None and self.heap_arr[right_child_indx] > largest_node_indx:
+            largest_node_indx = right_child_indx
+        
+        if largest_node_indx != node:
+            self.swap_nodes(self.heap_arr, largest_node_indx, node)
+            self.max_heapify(largest_node_indx)
+
+    def build_heap(self, A):
+
+        begin_node, end_node = len(A) // 2, 0
+        self.heap_arr = A.copy()
+        self.size = len(A)
+
+        for node in range(begin_node, end_node - 1, -1):
+            self.max_heapify(node)
+
+        
