@@ -26,8 +26,22 @@ class Heap:
             return self.heap_arr[0]
         raise IndexError('Cannot get top element from an empty heap.')
 
+    def get_last_element(self):
+        if self.size > 0:
+            return self.heap_arr[-1]
+        raise IndexError('Cannot get last element from an empty heap.')
+
     def pop_top_element(self):
-        pass
+        last_element_indx = self.size - 1
+        top_element_indx = 0
+        top_element = self.heap_arr[0]
+
+        self.swap_nodes(self.heap_arr, top_element_indx, last_element_indx)
+
+        self.size = self.size - 1
+        self.max_heapify(top_element_indx)
+
+        return top_element
 
     def swap_nodes(self, arr, indx_1, indx_2):
         arr[indx_1], arr[indx_2] = arr[indx_2], arr[indx_1]
