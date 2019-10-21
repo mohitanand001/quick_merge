@@ -42,6 +42,9 @@ class Heap:
     def pop_top_element(self):
         """Returns top element, removes it from balances the heap."""
 
+        if self.size <= 0:
+            raise IndexError('Cannot pop from an empty heap.')
+
         last_element_indx = self.size - 1
         top_element_indx = 0
         top_element = self.heap_arr[0]
@@ -87,4 +90,8 @@ class Heap:
         for node in range(begin_node, end_node - 1, -1):
             self.max_heapify(node)
 
-        
+if __name__ == "__main__":
+    head_obj = Heap()
+    head_obj.build_heap([3, -4, 1, 21, 2])
+    while(head_obj.size > 0):
+        print(head_obj.pop_top_element())
