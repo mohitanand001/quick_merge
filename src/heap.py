@@ -104,7 +104,5 @@ class Heap:
 if __name__ == "__main__":
     head_obj = Heap()
     head_obj.build_heap([3, -4, 1, 21, 2])
-    # while(head_obj.size > 0):
-    #     print(head_obj.pop_top_element())
-
+ 
     print(head_obj.heap_sort())
