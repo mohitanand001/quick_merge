@@ -22,7 +22,8 @@ def test_get_top_element_raises(test_input):
         heap_obj.get_top_element()
 
 
-@pytest.mark.parametrize("test_input", [[1, 2, 3, 5], 
+@pytest.mark.parametrize("test_input", [[1, 2, 3, 5],
+                                        [4, 6, 0, 1],
                                          [-1, 2, 0, 12], 
                                          [0, 1, 3, 54, -12, -43, 21, ],
                                          [],]
