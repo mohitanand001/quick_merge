@@ -14,7 +14,7 @@ from src.heap import Heap
 def test_get_left_child_indx(test_heap, test_node):
     heap_obj = Heap()
     heap_obj.build_heap(test_heap)
-    assert heap_obj.get_left_child_indx(test_node) == 
+    assert heap_obj.get_left_child_indx(test_node) == 1
 
 @pytest.mark.parametrize("test_input,expected", [ ([8, 1, 2, 4], 8),
                                                   ([1, 2, 5, 3], 5),
