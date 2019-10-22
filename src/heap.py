@@ -5,11 +5,17 @@ class Heap:
        the class behaves as max_heap.
     """
 
-    def __init__(self, ):
+    def __init__(self, cmp = None):
         self.heap_arr = []
         self.size = 0
-        self.comprt = None
+        if cmp is None:
+            self.comprt = self.default_compr
+        else:
+            self.comprt = cmp
 
+
+    def default_compr(self, x, y):
+        return x > y
 
     def get_left_child_indx(self, node):
         """Returns the index of left child of node.
@@ -69,10 +75,10 @@ class Heap:
         right_child_indx = self.get_right_child_indx(node)
         largest_node_indx = node
 
-        if left_child_indx is not None and self.heap_arr[left_child_indx] > self.heap_arr[largest_node_indx]:
+        if left_child_indx is not None and self.comprt(self.heap_arr[left_child_indx], self.heap_arr[largest_node_indx]):
             largest_node_indx = left_child_indx
         
-        if right_child_indx is not None and self.heap_arr[right_child_indx] > self.heap_arr[largest_node_indx]:
+        if right_child_indx is not None and self.comprt(self.heap_arr[right_child_indx], self.heap_arr[largest_node_indx]):
             largest_node_indx = right_child_indx
         
         if largest_node_indx != node:
@@ -102,7 +108,10 @@ class Heap:
 
 
 if __name__ == "__main__":
-    head_obj = Heap()
-    head_obj.build_heap([3, -4, 1, 21, 2])
- 
-    print(head_obj.heap_sort())
+    pass
+    head_obj = Heap(lambda x, y : x < y)
+    head_obj.build_heap([3, -4, 1, 21, 2],)
+    while(head_obj.size > 0):
+        print(head_obj.pop_top_element())
+
+    # print(head_obj.heap_sort())
