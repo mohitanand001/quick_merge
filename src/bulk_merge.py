@@ -28,7 +28,7 @@ class QuickMerge:
             merged_df = pd.merge(curr_df_1,
                                  curr_df_2,
                                  on = self.merge_key,
-                                       )
+                                 how='outer',)
             hp_obj.insert_node(merged_df)
 
             return hp_obj.pop_top_element()
