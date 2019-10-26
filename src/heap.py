@@ -5,14 +5,15 @@ class Heap:
        the class behaves as max_heap.
     """
 
-    def __init__(self, cmp = None):
-        self.heap_arr = []
-        self.size = 0
+    def __init__(self, heap_arr, cmp = None):
+        self.heap_arr = heap_arr
         if cmp is None:
             self.comprt = self.default_compr
         else:
             self.comprt = cmp
 
+    def get_size(self):
+        return len(self.heap_arr)
 
     def default_compr(self, x, y):
         return x > y
@@ -20,46 +21,47 @@ class Heap:
     def get_left_child_indx(self, node):
         """Returns the index of left child of node.
         """
-        if 2 * node + 1 < self.size:
+        if 2 * node + 1 < self.get_size():
             return 2 * node + 1
         return None
 
     def get_right_child_indx(self, node):
         """Returns the index of the left child of node.
         """
-        if 2 * node + 2 < self.size:
+        if 2 * node + 2 < self.get_size():
             return 2 * node + 2
         return None
     
     def get_top_element(self):
         """Returns the top element in the heap.
         """
-        if self.size > 0:
+        if self.get_size() > 0:
             return self.heap_arr[0]
         raise IndexError('Cannot get top element from an empty heap.')
 
     def get_last_element(self):
         """Returns the last element in the heap.
         """
-        if self.size > 0:
+        if self.get_size() > 0:
             return self.heap_arr[-1]
         raise IndexError('Cannot get last element from an empty heap.')
 
     def pop_top_element(self):
         """Returns top element, removes it from balances the heap."""
 
-        if self.size <= 0:
+        if self.get_size() <= 0:
             raise IndexError('Cannot pop from an empty heap.')
+        
+        
 
-        last_element_indx = self.size - 1
+        last_element_indx = self.get_size() - 1
         top_element_indx = 0
         top_element = self.heap_arr[0]
 
         self.swap_nodes(self.heap_arr, top_element_indx, last_element_indx)
-
-        self.size = self.size - 1
+    
+        self.heap_arr.pop()
         self.max_heapify(top_element_indx)
-
         return top_element
 
     def swap_nodes(self, arr, indx_1, indx_2):
@@ -85,13 +87,36 @@ class Heap:
             self.swap_nodes(self.heap_arr, largest_node_indx, node)
             self.max_heapify(largest_node_indx)
 
-    def build_heap(self, A):
+    def get_parent_indx(self, node_idx):
+        return (node_idx - 1) // 2
+
+    def get_parent(self, node_idx):
+        return self.heap_arr[self.get_parent_indx(node_idx)]
+
+    def insert_node(self, node):
+        """Insert a node in the heap and balance the heap according to the
+        comparator function.
+        """
+        self.heap_arr.append(node)
+        node_idx = self.get_size()
+        while self.get_parent_indx(node_idx) >= 0:
+            parent = self.get_parent(node_idx)
+
+            if self.comprt(node, parent):
+                node_idx = (node_idx - 1) // 2
+            else:
+                break
+
+
+        
+
+    def build_heap(self,):
         """Builds the heap from the collection.
         """
-
+        A = self.heap_arr
         begin_node, end_node = len(A) // 2, 0
-        self.heap_arr = A.copy()
-        self.size = len(A)
+        # self.heap_arr = A.copy()
+ 
 
         for node in range(begin_node, end_node - 1, -1):
             self.max_heapify(node)
@@ -101,7 +126,7 @@ class Heap:
         the heap_sort operation is performed.
         """
         sorted_list = []
-        while(self.size > 0):
+        while(self.get_size() > 0):
             sorted_list.append(self.pop_top_element())
         
         return sorted_list
@@ -109,9 +134,7 @@ class Heap:
 
 if __name__ == "__main__":
     pass
-    head_obj = Heap(lambda x, y : x < y)
-    head_obj.build_heap([3, -4, 1, 21, 2],)
-    while(head_obj.size > 0):
+    head_obj = Heap([3, -4, 1, 21, 2], lambda x, y : x < y)
+    head_obj.build_heap()
+    while(head_obj.get_size() > 0):
         print(head_obj.pop_top_element())
-
-    # print(head_obj.heap_sort())
