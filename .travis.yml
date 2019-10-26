@@ -9,7 +9,7 @@ matrix:
     # add/remove environment variables, and use them below during the install.
 
     - python: 3.7
-      env: NUMPY=0.25.2
+      env: PANDAS=0.25.2
 
 before_install:
 
@@ -26,7 +26,7 @@ install:
   # We just set up a conda environment with the right Python version. This
   # should not need changing.
 
-  - conda create --yes -n test python=$TRAVIS_PYTHON_VERSION
+  - conda create -n test python=$TRAVIS_PYTHON_VERSION
   - source activate test
 
   # Below, include the dependencies you want to install with conda, optionally
@@ -35,7 +35,7 @@ install:
   # the first package to install (for every conda install command) otherwise
   # numpy may be automatically upgraded.
 
-  - conda install --yes numpy=$NUMPY scipy=$SCIPY astropy matplotlib pytest pip
+  - conda install  pandas=$pandas pytest pip
 
   # You can also install some dependencies with pip if not available in conda
 
