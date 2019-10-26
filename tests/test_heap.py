@@ -12,23 +12,23 @@ from src.heap import Heap
                                                  ([1, 2, 4, 6 ,10], 0),
                                                  ])
 def test_get_left_child_indx(test_heap, test_node):
-    heap_obj = Heap()
-    heap_obj.build_heap(test_heap)
+    heap_obj = Heap(test_heap)
+    heap_obj.build_heap()
     assert heap_obj.get_left_child_indx(test_node) == 1
 
 @pytest.mark.parametrize("test_input,expected", [ ([8, 1, 2, 4], 8),
                                                   ([1, 2, 5, 3], 5),
                                                   ([5], 5)] ) 
 def test_get_top_element(test_input, expected):
-    heap_obj = Heap()
-    heap_obj.build_heap(test_input)
+    heap_obj = Heap(test_input)
+    heap_obj.build_heap()
     assert heap_obj.get_top_element() == expected
 
 @pytest.mark.parametrize("test_input", [[]])
 def test_get_top_element_raises(test_input):
     with pytest.raises(IndexError, ):
-        heap_obj = Heap()
-        heap_obj.build_heap(test_input)
+        heap_obj = Heap(test_input)
+        heap_obj.build_heap()
         heap_obj.get_top_element()
 
 
@@ -39,7 +39,7 @@ def test_get_top_element_raises(test_input):
                                          [],]
                                          )
 def test_heap_sort(test_input):
-    heap_obj = Heap()
-    heap_obj.build_heap(test_input)
+    heap_obj = Heap(test_input)
+    heap_obj.build_heap()
     assert heap_obj.heap_sort() == sorted(test_input, reverse=True)
 
