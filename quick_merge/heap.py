@@ -5,7 +5,7 @@ class Heap:
        the class behaves as max_heap.
     """
 
-    def __init__(self, heap_arr, cmp = None):
+    def __init__(self, heap_arr, cmp=None):
         self.heap_arr = heap_arr
         if cmp is None:
             self.comprt = self.default_compr
@@ -31,35 +31,33 @@ class Heap:
         if 2 * node + 2 < self.get_size():
             return 2 * node + 2
         return None
-    
+
     def get_top_element(self):
         """Returns the top element in the heap.
         """
         if self.get_size() > 0:
             return self.heap_arr[0]
-        raise IndexError('Cannot get top element from an empty heap.')
+        raise IndexError("Cannot get top element from an empty heap.")
 
     def get_last_element(self):
         """Returns the last element in the heap.
         """
         if self.get_size() > 0:
             return self.heap_arr[-1]
-        raise IndexError('Cannot get last element from an empty heap.')
+        raise IndexError("Cannot get last element from an empty heap.")
 
     def pop_top_element(self):
         """Returns top element, removes it from balances the heap."""
 
         if self.get_size() <= 0:
-            raise IndexError('Cannot pop from an empty heap.')
-        
-        
+            raise IndexError("Cannot pop from an empty heap.")
 
         last_element_indx = self.get_size() - 1
         top_element_indx = 0
         top_element = self.heap_arr[0]
 
         self.swap_nodes(self.heap_arr, top_element_indx, last_element_indx)
-    
+
         self.heap_arr.pop()
         self.max_heapify(top_element_indx)
         return top_element
@@ -72,17 +70,21 @@ class Heap:
     def max_heapify(self, node):
         """Max heapifies a tree, starting from a given node index.
         """
-        
+
         left_child_indx = self.get_left_child_indx(node)
         right_child_indx = self.get_right_child_indx(node)
         largest_node_indx = node
 
-        if left_child_indx is not None and self.comprt(self.heap_arr[left_child_indx], self.heap_arr[largest_node_indx]):
+        if left_child_indx is not None and self.comprt(
+            self.heap_arr[left_child_indx], self.heap_arr[largest_node_indx]
+        ):
             largest_node_indx = left_child_indx
-        
-        if right_child_indx is not None and self.comprt(self.heap_arr[right_child_indx], self.heap_arr[largest_node_indx]):
+
+        if right_child_indx is not None and self.comprt(
+            self.heap_arr[right_child_indx], self.heap_arr[largest_node_indx]
+        ):
             largest_node_indx = right_child_indx
-        
+
         if largest_node_indx != node:
             self.swap_nodes(self.heap_arr, largest_node_indx, node)
             self.max_heapify(largest_node_indx)
@@ -107,16 +109,12 @@ class Heap:
             else:
                 break
 
-
-        
-
     def build_heap(self,):
         """Builds the heap from the collection.
         """
         A = self.heap_arr
         begin_node, end_node = len(A) // 2, 0
         # self.heap_arr = A.copy()
- 
 
         for node in range(begin_node, end_node - 1, -1):
             self.max_heapify(node)
@@ -126,15 +124,15 @@ class Heap:
         the heap_sort operation is performed.
         """
         sorted_list = []
-        while(self.get_size() > 0):
+        while self.get_size() > 0:
             sorted_list.append(self.pop_top_element())
-        
+
         return sorted_list
 
 
 if __name__ == "__main__":
     pass
-    head_obj = Heap([3, -4, 1, 21, 2], lambda x, y : x < y)
+    head_obj = Heap([3, -4, 1, 21, 2], lambda x, y: x < y)
     head_obj.build_heap()
-    while(head_obj.get_size() > 0):
+    while head_obj.get_size() > 0:
         print(head_obj.pop_top_element())
