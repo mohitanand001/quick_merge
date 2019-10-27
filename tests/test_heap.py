@@ -56,12 +56,21 @@ def test_get_top_element_raises(test_input):
         heap_obj.build_heap()
         heap_obj.get_top_element()
 
-@pytest.mark.parametrize("test_input", )
-def test_get_last_element(test_input):
-    heap_obj = Heap(test_input)
-    heap_obj.build_heap()
 
-    assert heap_obj.get_last_element() == 
+@pytest.mark.parametrize("test_input", [[1, 2, 54, 5, 2, -1, 21, 3], 
+                                        [2], 
+                                        [-1],
+                                        [5,2,-1]
+                                        ])
+def test_heap_sort(test_input):
+    heap_obj_max = Heap(test_input.copy(), lambda x, y: x > y)
+    heap_obj_max.build_heap()
+    assert heap_obj_max.heap_sort() == sorted(test_input, reverse=True)
+
+    heap_obj_min = Heap(test_input.copy(), lambda x, y: x < y)
+    heap_obj_min.build_heap()
+    assert heap_obj_min.heap_sort() == sorted(test_input)
+    
 
 # @pytest.mark.parametrize("test_input", [[1, 2, 3, 5],
 #                                         [4, 6, 0, 1],
