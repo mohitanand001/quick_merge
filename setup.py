@@ -11,6 +11,6 @@ setup(
     url="https://github.com/farziengineer/quick_merge",
     platforms="any",
     packages=find_packages(),
-    keywords=["pandas",],
+    keywords=["pandas"],
     install_requires=["pandas"],
 )
