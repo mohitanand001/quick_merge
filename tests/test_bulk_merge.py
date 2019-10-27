@@ -1,10 +1,10 @@
 import os
 import sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# sys.path.append((os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
 
-from src.heap import Heap
+from quick_merge.quick_merge.heap import Heap
 
 @pytest.mark.parametrize("test_input", [[]])
 def test_get_top_element_raises(test_input):

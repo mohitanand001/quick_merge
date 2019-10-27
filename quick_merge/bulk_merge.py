@@ -1,11 +1,9 @@
 import os
-import sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import numpy as np
 import pandas as pd
 
-from src.heap import Heap
+from quick_merge.quick_merge.heap import Heap
 
 class QuickMerge:
 
@@ -40,8 +38,15 @@ class QuickMerge:
 
         return self.quick_merge_util(heap_obj)
 
-    
-    
+def quick_merge(dataframes=None,
+                merge_key=None,
+                comparator=None,
+                ):
+    q_merge_obj = QuickMerge(dataframes, merge_key, comparator)
+    res = q_merge_obj.quick_merge_driver()
+    return res
+
+
 
 if __name__ == "__main__":
     

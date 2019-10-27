@@ -1,10 +1,8 @@
 import os
-import sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
 
-from src.heap import Heap
+from quick_merge.quick_merge.heap import Heap
 
 
 @pytest.mark.parametrize("test_heap", [ [1, 2, 4, 5], [] ])
