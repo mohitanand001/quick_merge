@@ -16,4 +16,5 @@ install:
 
 # command to run tests
 script:
+  - python setup.py install
   - pytest tests/test_bulk_merge.py
