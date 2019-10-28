@@ -13,6 +13,12 @@ Theoretically a full outer merge costs `O(n*m)`, where `n` and `m` are number of
 If we index, the same complexity reduces to `O(n+m)`. So, if we have two small files in each step to merge, we save time.
 
 
+### Installation
+Build from source.
+```git clone https://github.com/farziengineer/quick_merge.git```
+```cd quick_merge```
+```python setup.py install```
+
 ### Usage
 ```python
 from quick_merge import quick_merge as qm
