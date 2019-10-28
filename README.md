@@ -15,10 +15,11 @@ If we index, the same complexity reduces to `O(n+m)`. So, if we have two small f
 
 ### Installation
 Build from source.
-```git clone https://github.com/farziengineer/quick_merge.git```
-```cd quick_merge```
-```python setup.py install```
-
+<pre>
+git clone https://github.com/farziengineer/quick_merge.git
+cd quick_merge
+python setup.py install
+</pre>
 ### Usage
 ```python
 from quick_merge import quick_merge as qm
