@@ -2,7 +2,7 @@ class Heap:
     """Custom Heap class which is used to find the max or min
        among a group of objects according to the comparator 
        function specified. If no comparator function is specified
-       the class behaves as max_heap.
+       the class behaves as min_heap.
     """
 
     def __init__(self, heap_arr, cmp=None):
@@ -16,7 +16,7 @@ class Heap:
         return len(self.heap_arr)
 
     def default_compr(self, x, y):
-        return x > y
+        return x < y
 
     def get_left_child_indx(self, node):
         """Returns the index of left child of node.
@@ -132,7 +132,7 @@ class Heap:
 
 if __name__ == "__main__":
     pass
-    head_obj = Heap([3, -4, 1, 21, 2], lambda x, y: x < y)
+    head_obj = Heap([3, -4, 1, 21, 2], )
     head_obj.build_heap()
     while head_obj.get_size() > 0:
         print(head_obj.pop_top_element())
