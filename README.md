@@ -22,7 +22,7 @@ python setup.py install
 </pre>
 ### Usage
 ```python
-from quick_merge import quick_merge as qm
+from quick_merge.bulk_merge import quick_merge as qm
 
 df_1 = pd.DataFrame(
     np.random.randint(0, 100, size=(100, 6)), columns=list("ABCDEF")
