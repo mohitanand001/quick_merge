@@ -5,7 +5,7 @@ import sys
 
 import pytest
 
-from quick_merge.quick_merge.heap import Heap
+from quick_merge.heap import Heap
 
 
 @pytest.mark.parametrize("test_input", [[]])

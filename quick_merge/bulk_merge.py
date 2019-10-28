@@ -3,7 +3,7 @@ import os
 import numpy as np
 import pandas as pd
 
-from quick_merge.quick_merge.heap import Heap
+from quick_merge.heap import Heap
 
 
 class QuickMerge:
@@ -39,7 +39,6 @@ def quick_merge(dataframes=None, merge_key=None, comparator=None):
     q_merge_obj = QuickMerge(dataframes, merge_key, comparator)
     res = q_merge_obj.quick_merge_driver()
     return res
-
 
 if __name__ == "__main__":
 
