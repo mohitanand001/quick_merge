@@ -10,7 +10,7 @@ setup(
     maintainer_email="anand.mohit001@gmail.com",
     url="https://github.com/farziengineer/quick_merge",
     platforms="any",
-    packages=find_packages(),
+    packages=["quick_merge", "tests",],
     keywords=["pandas"],
     install_requires=["pandas"],
 )
