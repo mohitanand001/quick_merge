@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from quick_merge.heap import Heap
+from quick_merge.quick_merge.heap import Heap
 
 
 @pytest.mark.parametrize("test_heap", [[1, 2, 4, 5], []])
