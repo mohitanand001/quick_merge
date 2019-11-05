@@ -1,6 +1,5 @@
 from functools import reduce
 import os
-from functools import reduce
 
 import numpy as np
 import pandas as pd
@@ -38,8 +37,8 @@ class QuickMerge:
         return self.quick_merge_util(heap_obj)
 
 
-def quick_merge(dataframes=None, merge_key=None, comparator=None):
-    q_merge_obj = QuickMerge(dataframes, merge_key, comparator)
+def quick_merge(dataframes=None, merge_key=None, ):
+    q_merge_obj = QuickMerge(dataframes, merge_key, lambda x, y: x.size < y.size)
     res = q_merge_obj.quick_merge_driver()
     return res
 
