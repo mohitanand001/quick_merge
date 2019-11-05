@@ -1,6 +1,5 @@
 from functools import reduce
 import os
-from functools import reduce
 
 import numpy as np
 import pandas as pd
