@@ -132,7 +132,7 @@ class Heap:
 
 if __name__ == "__main__":
     pass
-    head_obj = Heap([3, -4, 1, 21, 2], )
+    head_obj = Heap([3, -4, 1, 21, 2])
     head_obj.build_heap()
     while head_obj.get_size() > 0:
         print(head_obj.pop_top_element())
