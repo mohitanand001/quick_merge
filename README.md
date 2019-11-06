@@ -22,7 +22,7 @@ python setup.py install
 </pre>
 ### Usage
 ```python
-from quick_merge.bulk_merge import quick_merge as qm
+from quick_merge import quick_merge_
 
 df_1 = pd.DataFrame(
     np.random.randint(0, 100, size=(100, 6)), columns=list("ABCDEF")
@@ -34,5 +34,5 @@ df_3 = pd.DataFrame(np.random.randint(0, 100, size=(100, 3)), columns=list("ABC"
 
 dfs = [df_1, df_2, df_3]
 
-res = qm(dataframes=dfs, merge_key='A')
+res = quick_merge_(dataframes=dfs, merge_key='A')
   ```
