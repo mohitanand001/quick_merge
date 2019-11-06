@@ -73,39 +73,4 @@ def quick_merge_(dataframes=None, merge_key=None):
     return res
 
 if __name__ == "__main__":
-    import copy
-    base_dir = '/Users/mohitanand/quick_merge/temp_files'
-    files = os.listdir(base_dir)
-    files.sort()
-
-
-    df_1 = pd.DataFrame(data={"A" : [1, 2, 3, 4], "B" : [43, 54, 67, 23], "C" : [43, 56, 89, 12]})
-    df_2 = pd.DataFrame(data={"A" : [4, 5, 1, 6], "D" : [334, 34, 56, 12]})
-    df_3 = pd.DataFrame(data={"A" : [12, 1, 3, 4], "E" : [12, 54, 56, 67], "F" : [34, 56, 34, 12]})
-    dfs = [df_1, df_2, df_3]
-
-
-    # dfs = [pd.read_csv(os.path.join(base_dir, file_), index_col='A') for file_ in files]
-    dfs_cop = copy.deepcopy(dfs)
-    df_ = quick_merge_(dfs, "A")
-
-    # dfs_cop = dfs.copy()
-    for df_c in dfs_cop:
-        print(df_c.columns)
-        df_c.set_index("A", inplace=True)
-
-    df_final = dfs_cop[0]
-    for df in dfs_cop[1:]:
-        df_final = pd.merge(df_final, df,  how='outer', left_index=True, right_index=True,)
-
-
-    df_ = df_[sorted(df_.columns)]
-    df_final = df_final[sorted(df_final.columns)]
-
- 
-    df_.fillna(0, inplace=True)
-    df_final.fillna(0, inplace=True)
-
-    df_eq = df_ == df_final
-
-    print(df_.equals(df_final))
+    pass
