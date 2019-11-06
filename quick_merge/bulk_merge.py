@@ -67,7 +67,7 @@ class QuickMerge:
         return self.quick_merge_util(heap_obj)
 
 
-def quick_merge(dataframes=None, merge_key=None):
+def quick_merge_(dataframes=None, merge_key=None):
     q_merge_obj = QuickMerge(dataframes, merge_key, )
     res = q_merge_obj.quick_merge_driver()
     return res
@@ -79,7 +79,7 @@ if __name__ == "__main__":
 
     dfs = [pd.read_csv(os.path.join(base_dir, file_), index_col='A') for file_ in files]
 
-    df_ = quick_merge(dfs,)
+    df_ = quick_merge_(dfs,)
 
     dfs_cop = dfs.copy()
     df_final = dfs_cop[0]
