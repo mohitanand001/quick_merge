@@ -3,8 +3,6 @@ A utility to `merge(full outer join)` large number of files in an optimized mann
 
 Let's say we have 100 files `(f1, f2, f3, .... f100)` all of them indexed by `id`, all of which needs to be merged together to form one consolidate file. Insetead of merging them one after the other in a loop, the quick_merge follows these steps.
 
-| ⚠️ : The passed `id` should be unique for each row in a dataframe, else the result would depend on the order of merge. |
-| --- |
 
 1. Add all the files `f1, f2, f3, ... f100` to a heap(the datastructure).
 2. Balance the heap, such that the top contains the one with `minimum rowsize`. 
@@ -14,6 +12,9 @@ Let's say we have 100 files `(f1, f2, f3, .... f100)` all of them indexed by `id
 
 Theoretically a full outer merge costs `O(n*m)`, where `n` and `m` are number of rows in the files (without indexing).
 If we index, the same complexity reduces to `O(n+m)`. So, if we have two small files in each step to merge, we save time.
+
+| ⚠️ : The passed `id` should be unique for each row in a dataframe, else the result would depend on the order of merge. |
+| --- |
 
 
 ### Installation
