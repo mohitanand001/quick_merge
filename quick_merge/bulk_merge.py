@@ -17,6 +17,7 @@ class QuickMerge:
     :param merge_key: The key to be indexed by which we have to merge the dataframes.
     :type merge_key: str, optional
     """
+
     def __init__(self, container, key=None):
         self.container = container.copy()
         self.merge_key = key
@@ -28,8 +29,9 @@ class QuickMerge:
         not exist. 
         """
         if self.merge_key is not None:
-            self.container = [df.set_index(self.merge_key, inplace=True) for df in self.container]
-
+            self.container = [
+                df.set_index(self.merge_key, inplace=True) for df in self.container
+            ]
 
     def quick_merge_util(self, hp_obj):
         """Maintains a heap of dataframes, constantly
@@ -43,11 +45,9 @@ class QuickMerge:
         while hp_obj.get_size() > 1:
             curr_df_1 = hp_obj.pop_top_element()
             curr_df_2 = hp_obj.pop_top_element()
-            merged_df = pd.merge(curr_df_1,
-                                 curr_df_2,
-                                 how="outer",
-                                 left_index=True,
-                                 right_index=True)
+            merged_df = pd.merge(
+                curr_df_1, curr_df_2, how="outer", left_index=True, right_index=True
+            )
             hp_obj.insert_node(merged_df)
 
         return hp_obj.pop_top_element()
@@ -68,9 +68,10 @@ class QuickMerge:
 
 
 def quick_merge_(dataframes=None, merge_key=None):
-    q_merge_obj = QuickMerge(dataframes, merge_key, )
+    q_merge_obj = QuickMerge(dataframes, merge_key)
     res = q_merge_obj.quick_merge_driver()
     return res
+
 
 if __name__ == "__main__":
     pass
