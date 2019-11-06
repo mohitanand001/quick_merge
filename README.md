@@ -22,17 +22,14 @@ python setup.py install
 </pre>
 ### Usage
 ```python
+import pandas as pd
+
 from quick_merge import quick_merge_
 
-df_1 = pd.DataFrame(
-    np.random.randint(0, 100, size=(100, 6)), columns=list("ABCDEF")
-)
-df_2 = pd.DataFrame(
-    np.random.randint(0, 100, size=(100, 9)), columns=list("ABCDEFGHI")
-)
-df_3 = pd.DataFrame(np.random.randint(0, 100, size=(100, 3)), columns=list("ABC"))
-
+df_1 = pd.DataFrame(data={"A" : [1, 2, 3, 4], "B" : [43, 54, 67, 23], "C" : [43, 56, 89, 12]})
+df_2 = pd.DataFrame(data={"A" : [4, 5, 1, 6], "D" : [334, 34, 56, 12]})
+df_3 = pd.DataFrame(data={"A" : [12, 1, 3, 4], "E" : [12, 54, 56, 67], "F" : [34, 56, 34, 12]})
 dfs = [df_1, df_2, df_3]
 
-res = quick_merge_(dataframes=dfs, merge_key='A')
+merged_df = quick_merge_(dataframes=dfs, merge_key="A")
   ```
