@@ -11,7 +11,8 @@ class QuickMerge:
     """Performs full outer join(merge) of large number of
     dataframes in an optimized manner. The algorithm capitalizes
     on the fact that full outer joins(merge) is both commutative
-    and associative.
+    and associative. Does all the operations inplace, heapifies the
+    list of pandas dataframes passed inplace.
     :param container: Container of dataframes
     :type container: List[pandas.core.frame.DataFrame]
     :param merge_key: The key to be indexed by which we have to merge the dataframes.
@@ -19,7 +20,7 @@ class QuickMerge:
     """
 
     def __init__(self, container, key=None):
-        self.container = container.copy()
+        self.container = container
         self.merge_key = key
 
     def index_dataframes_util(self):
