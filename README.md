@@ -1,5 +1,5 @@
 # quick_merge
-A utility to `merge(full outer join)` large number of files in an optimized manner.The algorithm capitalizes on the fact that `full outer join` is `associative` as well as `commutative`, so the order of merging would not change the final result.
+A utility to `merge(full outer join or inner join)` large number of files in an optimized manner.The algorithm capitalizes on the fact that `full outer join` is `associative` as well as `commutative`, so the order of merging would not change the final result.
 
 Let's say we have 100 files `(f1, f2, f3, .... f100)` all of them indexed by `id`, all of which needs to be merged together to form one consolidate file. Insetead of merging them one after the other in a loop, the quick_merge follows these steps.
 
