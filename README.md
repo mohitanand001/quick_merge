@@ -33,7 +33,45 @@ from quick_merge import quick_merge_
 df_1 = pd.DataFrame(data={"A" : [1, 2, 3, 4], "B" : [43, 54, 67, 23], "C" : [43, 56, 89, 12]})
 df_2 = pd.DataFrame(data={"A" : [4, 5, 1, 6], "D" : [334, 34, 56, 12]})
 df_3 = pd.DataFrame(data={"A" : [12, 1, 3, 4], "E" : [12, 54, 56, 67], "F" : [34, 56, 34, 12]})
+df_1
+   A   B   C
+0  1  43  43
+1  2  54  56
+2  3  67  89
+3  4  23  12
+
+df_2
+
+   A    D
+0  4  334
+1  5   34
+2  1   56
+3  6   12
+
+
+df_3
+    A   E   F
+0  12  12  34
+1   1  54  56
+2   3  56  34
+3   4  67  12
+
+
 dfs = [df_1, df_2, df_3]
 
 merged_df = quick_merge_(dataframes=dfs, merge_key="A")
+
+merged_df
+
+       B     C      D     E     F
+A                                
+1   43.0  43.0   56.0  54.0  56.0
+2   54.0  56.0    NaN   NaN   NaN
+3   67.0  89.0    NaN  56.0  34.0
+4   23.0  12.0  334.0  67.0  12.0
+5    NaN   NaN   34.0   NaN   NaN
+6    NaN   NaN   12.0   NaN   NaN
+12   NaN   NaN    NaN  12.0  34.0
+
+
   ```
